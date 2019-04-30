@@ -143,7 +143,68 @@ describe('literals', () => {
             });
         });
         describe('array literals', () => {
+            it('has them', () => {
+                const friends = ['REggie', 'David', 'Sara', 'Sean'];
+                expect(friends[1]).toBe('David');
+                expect(friends[999]).toBeUndefined();
+                friends[999] = 'Billy';
+                expect(friends[999]).toBe('Billy');
 
+                // declaring without initializing
+                let colors: string[];
+
+                colors = ['Red', 'Green', 'Orange'];
+
+                // You can also use this syntax if you like it better, but I don't (usually)
+
+                let numbers: Array<number>;
+
+                numbers = [1, 2, 3];
+
+                let jumbled: (string | number)[] = [1, 'dog', 'cat'];
+                let jumbled1: Array<number | string>;
+            });
+            it('using tuple types', () => {
+
+                let settings: [boolean, string, number] = [true, 'shirt', 12];
+
+                const s = settings[2];
+
+                // interface NameInfo { fullName: string, numberOfLetters: number };
+                // function formatName(first: string, last: string): NameInfo {
+                //     let fullName = `${last}, ${first}`;
+                //     return {
+                //         fullName,
+                //         numberOfLetters: fullName.length
+                //     };
+                // }
+
+                function formatName(first: string, last: string): [string, number] {
+                    let fullName = `${last}, ${first}`;
+                    return [fullName, fullName.length];
+                }
+
+                // const answer = formatName('Han', 'Solo');
+                // expect(answer.fullName).toBe('Solo, Han');
+                // expect(answer.numberOfLetters).toBe(9);
+
+                const [theName, howLong] = formatName('Han', 'Solo');
+
+                expect(theName).toBe('Solo, Han');
+                expect(howLong).toBe(9);
+
+
+
+            });
+
+            it('writing unmaintainable code', () => {
+
+                // prefer unions of literals to actual enums - they are functionally the same but more awesomer
+                type SeatType = 'aisle' | 'window' | 'middle';
+
+                let mySeat: SeatType = 'window';
+
+            });
         });
     });
 });
