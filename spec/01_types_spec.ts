@@ -87,5 +87,63 @@ describe('literals', () => {
 
             expect(info).toBe(info2);
         });
+        describe('function literals', () => {
+            it('how to declare a function', () => {
+
+                expect(add(2, 2)).toBe(4);
+
+                // Named Function
+                function add(a: number, b: number) {
+                    return a + b;
+                }
+                // an anonymous function  with the function keyword
+                const subtract = function (a: number, b: number) {
+                    return a - b;
+                }
+                // Anonymous arrow function
+                const multiply = (a: number, b: number) => a * b;
+
+                expect(subtract(20, 8)).toBe(12);
+                expect(multiply(3, 3)).toBe(9);
+
+            });
+
+
+        });
+        describe('object literals & interfaces', () => {
+            it('has them', () => {
+
+                interface Movie {
+                    title: string;
+                    director: string;
+                    yearReleased: number;
+                };
+
+                const movie: Movie = {
+                    title: 'Thor Ragnorak',
+                    director: 'Waititi',
+                    yearReleased: 2017
+                }
+                const antMan: Movie = {
+                    title: 'Ant Man',
+                    director: 'Jones',
+                    yearReleased: 2014
+                }
+
+                expect(movie.title).toBe('Thor Ragnorak');
+                expect(movie['title']).toBe('Thor Ragnorak');
+                // movie.title = 'Thor: Ragnorak';movie.directedBy = 'Jones';
+                const dataFromApi = {
+                    data: 'All is good',
+                    'generated at': 'Server in DC'
+                }
+
+                expect(dataFromApi.data).toBe('All is good');
+                expect(dataFromApi["generated at"]).toBe('Server in DC');
+            });
+        });
+        describe('array literals', () => {
+
+        });
     });
 });
