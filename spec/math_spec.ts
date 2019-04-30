@@ -10,4 +10,7 @@ describe('the math module', () => {
     it('can multiply', () => {
         expect(multiply(3, 3)).toBe(9);
     });
+    it('here is another one', () => {
+
+    });
 });
